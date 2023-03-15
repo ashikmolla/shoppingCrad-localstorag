@@ -1,33 +1,36 @@
 const addProductQunatity =()=>{
     const productFild = document.getElementById('Product-name')
     const quntityField = document.getElementById('Product-quantity')
-    const Product =productFild.value;
+    const product =productFild.value;
     const qunaty =quntityField.value;
     productFild.value=''
     quntityField.value=''
-    console.log(Product, qunaty);
-    diplayProducts(Product, qunaty)
-    saveItemStorage(Product, qunaty)
+    console.log(product, qunaty);
+
+    diplayProducts(product, qunaty)
+    saveItemStorage(product, qunaty)
 }
-const diplayProducts=(Product, qunaty)=>{
+const diplayProducts=(product, qunaty)=>{
     const ul =document.getElementById('display-prodecut-Container');
   const li =document.createElement('li');
-  li.innerText =`${Product} :- ${qunaty}`;
+  li.innerText =`${product} :- ${qunaty}`;
   ul.appendChild(li);
 }
+
 const getStoregSerItem = ()=>{
     let crat ={};
     const storedCard = localStorage.getItem('crat');
     if(storedCard){
         crat = JSON.parse(storedCard);
-    }else{
-        return crat
-    }
+    }return crat
 
 }
-const saveItemStorage=(Product, qunaty)=>{
+const saveItemStorage=(product, qunaty)=>{
     const crat = getStoregSerItem();
-    cart[Product]= qunaty;
-    console.log(crat)
+    cart[product]= qunaty;
+    // console.log(crat)
+    const cartStringfiled =JSON.stringify(cart)
+    localStorage.setItem('cart', cartStringfiled)
+
 }
-getStoregSerItem()
+
