@@ -1,0 +1,24 @@
+
+.inputProductItem{
+    border:1px solid red
+}
+.inputProductItem #inputValue{
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 10px;
+}
+.inputProductItem #inputValue h1{
+    color:lightseagreen
+}
+.inputProductItem #inputValue input{
+    height: 25px;
+    width: 300px;
+}
+.inputProductItem #inputValue button{
+    border:None;
+    background:#ff5200;
+    padding:9px;
+    border-radius: 5px;
+    cursor: pointer
+    
+}

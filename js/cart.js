@@ -2,35 +2,60 @@ const addProductQunatity =()=>{
     const productFild = document.getElementById('Product-name')
     const quntityField = document.getElementById('Product-quantity')
     const product =productFild.value;
-    const qunaty =quntityField.value;
+    const qunatity =quntityField.value;
     productFild.value=''
     quntityField.value=''
-    console.log(product, qunaty);
+    console.log(product, qunatity);
 
-    diplayProducts(product, qunaty)
-    saveItemStorage(product, qunaty)
+    diplayProducts(product, qunatity)
+    saveItemLocalStorage(product, qunatity)
+   
 }
-const diplayProducts=(product, qunaty)=>{
+const diplayProducts=(product, qunatity)=>{
     const ul =document.getElementById('display-prodecut-Container');
   const li =document.createElement('li');
-  li.innerText =`${product} :- ${qunaty}`;
+  li.innerText =`${product} :- ${qunatity}`;
   ul.appendChild(li);
 }
 
-const getStoregSerItem = ()=>{
-    let crat ={};
-    const storedCard = localStorage.getItem('crat');
-    if(storedCard){
-        crat = JSON.parse(storedCard);
-    }return crat
-
+const getItemStoredShopppingCart =()=>{
+    let cart= {};
+    const storedCart = localStorage.getItem('cart');
+    if(storedCart){
+     cart = JSON.parse(storedCart)
+    }
+    return cart;
 }
-const saveItemStorage=(product, qunaty)=>{
-    const crat = getStoregSerItem();
-    cart[product]= qunaty;
-    // console.log(crat)
-    const cartStringfiled =JSON.stringify(cart)
-    localStorage.setItem('cart', cartStringfiled)
 
+const saveItemLocalStorage =(product, qunatity)=>{
+     const cart =getItemStoredShopppingCart();
+     cart [product] = qunatity;
+    //  console.log(cart)
+    const cartStringFide = JSON.stringify(cart);
+    // console.log(cartStringFide)
+    localStorage.setItem('cart', cartStringFide)
 }
+const DisplayProductFromSevItemLocoleStored =()=>{
+    const saveCart =getItemStoredShopppingCart();
+    console.log(saveCart)
+    for(const product in saveCart){
+        const qunatity = saveCart[product];
+        console.log(product, qunatity);
+        diplayProducts(product, qunatity);
+        
+    }
+}
+DisplayProductFromSevItemLocoleStored();
+
+
+
+
+
+
+
+
+
+
+
+
 
